@@ -13,7 +13,8 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "heroku-cli": "^6.15.24"
+    "heroku-cli": "^6.15.24",
+    "mongoose": "^5.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.14.12"
