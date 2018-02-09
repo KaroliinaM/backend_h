@@ -3,6 +3,7 @@ const app=express()
 const bodyParser=require('body-parser')
 const cors=require('cors')
 app.use(cors())
+app.use(express.static('build'))
 
 let notes = [
   {
@@ -29,13 +30,13 @@ app.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>')
 })
 
-app.get('/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
   res.json(notes)
 })
 
 app.use(bodyParser.json())
 
-app.get('/notes/:id', (request, response) => {
+app.get('/api/notes/:id', (request, response) => {
   const id = Number(request.params.id)
   const note = notes.find(note => note.id === id )
   if (note) {
@@ -48,7 +49,7 @@ const generateId=()=> {
   const maxId=notes.length > 0 ? notes.map(n => n.id).sort().reverse()[0] : 1
   return maxId + 1
 }
-app.post('/notes', (request, response)=> {
+app.post('/api/notes', (request, response)=> {
   const body=request.body
 
   if(body.content===undefined) {
@@ -66,7 +67,7 @@ app.post('/notes', (request, response)=> {
   response.json(note)
 })
 
-app.delete('/notes/:id', (request, response) => {
+app.delete('/api/notes/:id', (request, response) => {
   const id=Number(request.params.id)
   notes=notes.filter(note=note.id!==id)
 
