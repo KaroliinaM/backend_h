@@ -12,7 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "heroku-cli": "^6.15.24"
   },
   "devDependencies": {
     "nodemon": "^1.14.12"
