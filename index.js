@@ -39,7 +39,15 @@ app.get('/api/notes/:id', (request, response) => {
   Note
     .findById(request.params.id)
     .then(note => {
-      response.json(formatNote(note))
+      if(note)  {
+        response.json(formatNote(note))
+      } else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => {
+      console.log(error)
+      response.status(400).send({error: 'malformatted id'})
     })
 })
 const generateId=()=> {
@@ -68,12 +76,32 @@ app.post('/api/notes', (request, response)=> {
 })
 
 app.delete('/api/notes/:id', (request, response) => {
-  const id=Number(request.params.id)
-  notes=notes.filter(note=note.id!==id)
-
-  response.status(204).end()
+  Note
+    .findByAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => {
+      response.status(400).send({error: 'malformatted id'})
+    })
 })
 
+app.put('/api/notes/:id', (request, response) => {
+  const body=request.body
+  const note={
+    content: body.content,
+    important: body.important
+  }
+  Note
+    .findByIdAndUpdate(request.params.id, note, {new: true} )
+    .then(updatedNote => {
+      response.json(formatNote(updatedNote))
+    })
+    .catch(error => {
+      console.log(error)
+      response.status(400).send({error: 'malformatted id'})
+    })
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
