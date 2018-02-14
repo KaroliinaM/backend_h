@@ -3,8 +3,8 @@ const app=express()
 const bodyParser=require('body-parser')
 const cors=require('cors')
 const mongoose=require('mongoose')
-const middleware=require('/utils/middleware')
-const notesRouter=require('/controllers/notes')
+const middleware=require('./utils/middleware')
+const notesRouter=require('./controllers/notes')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
