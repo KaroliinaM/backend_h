@@ -12,10 +12,12 @@
   "author": "Karoliina Mietola",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "cors": "^2.8.4",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "heroku-cli": "^6.15.24",
+    "jsonwebtoken": "^8.1.1",
     "mongoose": "^5.0.4"
   },
   "devDependencies": {

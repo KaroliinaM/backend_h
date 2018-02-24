@@ -1,7 +1,9 @@
 POST http://localhost:3001/api/notes
 content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1YTkxNTEzMDQ1NTg4OTZmNGIzOWI5M2YiLCJpYXQiOjE1MTk0NzY2OTF9.YnZG-yBLFpcgn7VXOnN21K9s_sDfboNn-LU9CZMJGmY
 
 {
-    "content": "testataan VS Coden REST clientiä taas",
-    "important": true
+    "content": "Vielä yksi",
+    "important": true,
+    "userId": "5a9151304558896f4b39b93f"
 }

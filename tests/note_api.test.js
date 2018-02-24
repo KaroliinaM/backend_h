@@ -123,11 +123,6 @@ describe('deletion of a note', async()=>{
   })
 
 })
-
-
-
-
-
   afterAll(()=>{
     server.close()
   })

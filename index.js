@@ -7,7 +7,8 @@ const mongoose=require('mongoose')
 const middleware=require('./utils/middleware')
 const notesRouter=require('./controllers/notes')
 const config=require('./utils/config')
-
+const usersRouter=require('./controllers/users')
+const loginRouter=require('./controllers/login')
 
 mongoose
   .connect(config.mongoUrl)
@@ -20,12 +21,15 @@ mongoose
 
 mongoose.Promise=global.Promise
 
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.static('build'))
 app.use(middleware.logger)
 
+app.use('/api/users', usersRouter)
 app.use('/api/notes', notesRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.error)
 
